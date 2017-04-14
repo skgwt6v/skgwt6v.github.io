@@ -10,5 +10,12 @@ var data = jsonData;
 <body>
 タイトルは<%= data.title %>
 ディスクリプションは<%= data.description %>
+
+クエッションは<%= data.question %>
+<% var len = data.type.length %>
+<% for (var i = 0; i < len; i++) { %>
+<p>回答<%= i + 1 %>:<%= data.type[i]%></p>
+<% } %>
+
 </body>
 </html>

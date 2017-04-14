@@ -1,0 +1,19 @@
+<%
+var absolutePath = filename.split(developDir)[filename.split(developDir).length -1].replace('.ejs','.html');
+var relativePath = '../'.repeat([absolutePath.split('/').length -1]);
+var page = {
+  title: "",
+  description: site.description,
+  keywords: site.keywords,
+  ogpType: "website",
+  ogpImage: site.ogpImage,
+  absolutePath: '/' + absolutePath,
+  relativePath: relativePath
+};
+-%>
+<%- include(page.relativePath + '_partials/_head', {page: page}); %>
+<%- include(page.relativePath + '_partials/_header', {page: page}); %>
+
+    <article>contens</article>
+
+<%- include(page.relativePath + '_partials/_footer', {page: page}); %>

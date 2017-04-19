@@ -1,5 +1,27 @@
 <% 
-var data = jsonData;
+var data = jsonData,
+	qa_title =  "質問" + data.id;
+	qa_question = data.question;
+	qa_type = data.type;
+	qa_len = data.type.length;
+
+var rootPath = "/template/";
+    qa_count = 20;
+	qa_current = Number(data.id);
+	qa_remining = 
+		qa_current == qa_count
+		? "ラスト"
+		: qa_count - qa_current + "問";
+	qa_back_url = 
+		qa_current == 0 
+		? null
+		: rootPath + (qa_current - 1) + ".html";
+	qa_next_url = 
+		qa_current == qa_count
+		? rootPath + "result.html"
+		: rootPath + (qa_current + 1) + ".html";
+		
+
 %><!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -10,79 +32,53 @@ var data = jsonData;
   <link rel="stylesheet" href="/assets/css/common.css">
 </head>
 <body>
-
+<%= qa_back_url %>
+<%= qa_next_url %>
 <section class="st-Wrapper st-qa_body">
 	<div class="st-Grid st-Grid-medium">
 	  <div class="st-Grid_Item st-Grid_Item-8of12Md">
-	    <h1 class-".st-qa_title">質問00</h1>
+	    <h1 class-"st-qa_title"><%= qa_title %></h1>
 	  </div>
 	  <div class="st-Grid_Item st-Grid_Item-4of12Md">
-	    <h2 class="st-qa_question"><%= data.question %></h2>
+	    <h2 class="st-qa_question"><%= qa_question %></h2>
 	  </div>
 	</div>
+	<% for (var i = 0; i < qa_len; i++) { %>
 
-		<div class="st-Grid st-Grid-medium">
-			<div class="st-Grid_Item st-Grid_Item-8of12Md">思いやりを大切にしたい</div>
-			<div class="st-Grid_Item st-Grid_Item-4of12Md">
-				<form method="post" action="example.cgi">
-				  	<input type="radio" name="q1" value="1">
-				  	<input type="radio" name="q1" value="2">
-				  	<input type="radio" name="q1" value="3">
-				  	<input type="radio" name="q1" value="4"> 
-	  			</form>
+	  			<div class="st-Grid st-Grid-medium">
+				<div class="st-Grid_Item st-Grid_Item-8of12Md"><%= qa_type[i] %></div>
+				<div class="st-Grid_Item st-Grid_Item-4of12Md">
+					<form method="post" action="example.cgi">
+					  	<input type="radio" name="q<% i %>" value="1">
+					  	<input type="radio" name="q<% i %>" value="2">
+					  	<input type="radio" name="q<% i %>" value="3">
+					  	<input type="radio" name="q<% i %>" value="4"> 
+		  			</form>
+				</div>
 			</div>
-		</div>
-		<div class="st-Grid st-Grid-medium">
-			<div class="st-Grid_Item st-Grid_Item-8of12Md">明るく快活</div>
-			<div class="st-Grid_Item st-Grid_Item-4of12Md">
-				<form method="post" action="example.cgi">
-				  	<input type="radio" name="q1" value="1">
-				  	<input type="radio" name="q2" value="2">
-				  	<input type="radio" name="q2" value="3">
-				  	<input type="radio" name="q2" value="4"> 
-		  	</form>
-			</div>
-		</div>
-		<div class="st-Grid st-Grid-medium">
-			<div class="st-Grid_Item st-Grid_Item-8of12Md">行動力があるほう</div>
-			<div class="st-Grid_Item st-Grid_Item-4of12Md">
-				<form method="post" action="example.cgi">
-				  	<input type="radio" name="q3" value="1">
-				  	<input type="radio" name="q3" value="2">
-				  	<input type="radio" name="q3" value="3">
-				  	<input type="radio" name="q3" value="4"> 
-		  	</form>
-			</div>
-		</div>
-		<div class="st-Grid st-Grid-medium">
-			<div class="st-Grid_Item st-Grid_Item-8of12Md">じっくり考えてから行動する</div>
-			<div class="st-Grid_Item st-Grid_Item-4of12Md">
-				<form method="post" action="example.cgi">
-				  	<input type="radio" name="q4" value="1">
-				  	<input type="radio" name="q4" value="2">
-				  	<input type="radio" name="q4" value="3">
-				  	<input type="radio" name="q4" value="4"> 
-		  	</form>
-			</div>
-		</div>
-
-  </div>
+	<% } %>
 </div>
+</section>
+<section class="st-Footer st-qa_footer">
+	<div class="st-Grid st-Grid-medium">
+		<div class="st-Grid_Item st-Grid_Item-4of12Md st-qa_footer_link_back">
+			<p><a href="">トップページへ</a></p>
+			<p><a href="">前の質問に戻る</a></p>
+		</div>
+		<div class="st-Grid_Item st-Grid_Item-4of12Md st-qa_footer_number">
+			<p>残り<%= qa_remining %>です。</p>
+		</div>
+		<div class="st-Grid_Item st-Grid_Item-4of12Md st-qa_footer_link_next">
+			<p><a href="">次の質問へ</a></p>
+		</div>
+	</div>
 </section>
 タイトルは<%= data.title %>
 ディスクリプションは<%= data.description %>
 
 クエッションは<%= data.question %>
-<% var len = data.type.length %>
-<% for (var i = 0; i < len; i++) { %>
-<p>回答<%= i + 1 %>:<%= data.type[i]%></p>
-  	<form method="post" action="example.cgi">
-		  	<input type="radio" name="q1" value="1">
-		  	<input type="radio" name="q1" value="2">
-		  	<input type="radio" name="q1" value="3">
-		  	<input type="radio" name="q1" value="4"> 
-  	</form>
-<% } %>
+
+
 
 <script type="text/javascript" src="/assets/js/jquery-2.2.0.min.js"></script>
 <script type="text/javascript" src="/assets/js/common.js"></script>

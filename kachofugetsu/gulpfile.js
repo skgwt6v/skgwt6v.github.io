@@ -112,7 +112,6 @@ gulp.task('template', function() {
       pages = json.pages,
       id;
 
-      console.log(tempFile)
   
   for (var i = 0; i < pages.length; i++) {
     id = pages[i].id;

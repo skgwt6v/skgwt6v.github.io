@@ -1,0 +1,36 @@
+<section class="st-Wrapper">
+  <div class="st-Grid st-Grid-medium">
+    <div class="st-Grid_Item st-Grid_Item-8of12Md">
+      <h1>質問00</h1>
+    </div>
+    <div class="st-Grid_Item st-Grid_Item-4of12Md">
+      <h2><%%= data.question %></h2>
+    </div>
+  </div>
+
+<div class="st-Grids st-Grids-col2Md st-Grids-col3Lg st-Grids-medium">
+  <div class="st-Grids_Item"><h3>思いやりを大切にしたい</h3></div>
+  <div class="st-Grids_Item">
+    <ul>
+      <li>思う</li>
+      <li>思わない</li>
+    </ul>
+
+
+  </div>
+</div>
+</section>
+タイトルは<%%= data.title %>
+ディスクリプションは<%%= data.description %>
+
+クエッションは<%%= data.question %>
+<%% var len = data.type.length %>
+<%% for (var i = 0; i < len; i++) { %>
+<p>回答<%%= i + 1 %>:<%%= data.type[i]%></p>
+    <form method="post" action="example.cgi">
+        <input type="radio" name="q1" value="1">
+        <input type="radio" name="q1" value="2">
+        <input type="radio" name="q1" value="3">
+        <input type="radio" name="q1" value="4"> 
+    </form>
+<% } %>

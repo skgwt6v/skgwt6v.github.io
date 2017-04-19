@@ -6,8 +6,69 @@ var data = jsonData;
   <meta charset="UTF-8">
   <meta name="description" content="<%= data.description %>">
   <title><%= data.title %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <link rel="stylesheet" href="/assets/css/common.css">
 </head>
 <body>
+
+<section class="st-Wrapper st-qa_body">
+	<div class="st-Grid st-Grid-medium">
+	  <div class="st-Grid_Item st-Grid_Item-8of12Md">
+	    <h1 class-".st-qa_title">質問00</h1>
+	  </div>
+	  <div class="st-Grid_Item st-Grid_Item-4of12Md">
+	    <h2 class="st-qa_question"><%= data.question %></h2>
+	  </div>
+	</div>
+
+		<div class="st-Grid st-Grid-medium">
+			<div class="st-Grid_Item st-Grid_Item-8of12Md">思いやりを大切にしたい</div>
+			<div class="st-Grid_Item st-Grid_Item-4of12Md">
+				<form method="post" action="example.cgi">
+				  	<input type="radio" name="q1" value="1">
+				  	<input type="radio" name="q1" value="2">
+				  	<input type="radio" name="q1" value="3">
+				  	<input type="radio" name="q1" value="4"> 
+	  			</form>
+			</div>
+		</div>
+		<div class="st-Grid st-Grid-medium">
+			<div class="st-Grid_Item st-Grid_Item-8of12Md">明るく快活</div>
+			<div class="st-Grid_Item st-Grid_Item-4of12Md">
+				<form method="post" action="example.cgi">
+				  	<input type="radio" name="q1" value="1">
+				  	<input type="radio" name="q2" value="2">
+				  	<input type="radio" name="q2" value="3">
+				  	<input type="radio" name="q2" value="4"> 
+		  	</form>
+			</div>
+		</div>
+		<div class="st-Grid st-Grid-medium">
+			<div class="st-Grid_Item st-Grid_Item-8of12Md">行動力があるほう</div>
+			<div class="st-Grid_Item st-Grid_Item-4of12Md">
+				<form method="post" action="example.cgi">
+				  	<input type="radio" name="q3" value="1">
+				  	<input type="radio" name="q3" value="2">
+				  	<input type="radio" name="q3" value="3">
+				  	<input type="radio" name="q3" value="4"> 
+		  	</form>
+			</div>
+		</div>
+		<div class="st-Grid st-Grid-medium">
+			<div class="st-Grid_Item st-Grid_Item-8of12Md">じっくり考えてから行動する</div>
+			<div class="st-Grid_Item st-Grid_Item-4of12Md">
+				<form method="post" action="example.cgi">
+				  	<input type="radio" name="q4" value="1">
+				  	<input type="radio" name="q4" value="2">
+				  	<input type="radio" name="q4" value="3">
+				  	<input type="radio" name="q4" value="4"> 
+		  	</form>
+			</div>
+		</div>
+
+  </div>
+</div>
+</section>
 タイトルは<%= data.title %>
 ディスクリプションは<%= data.description %>
 
@@ -15,7 +76,15 @@ var data = jsonData;
 <% var len = data.type.length %>
 <% for (var i = 0; i < len; i++) { %>
 <p>回答<%= i + 1 %>:<%= data.type[i]%></p>
+  	<form method="post" action="example.cgi">
+		  	<input type="radio" name="q1" value="1">
+		  	<input type="radio" name="q1" value="2">
+		  	<input type="radio" name="q1" value="3">
+		  	<input type="radio" name="q1" value="4"> 
+  	</form>
 <% } %>
 
+<script type="text/javascript" src="/assets/js/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="/assets/js/common.js"></script>
 </body>
 </html>

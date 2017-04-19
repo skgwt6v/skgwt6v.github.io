@@ -40,7 +40,7 @@ var develop = {
   'html': ['develop/**/*.ejs', '!develop/**/_*.ejs'],
   'template': 'develop/_template/_*.ejs',
   'htmlWatch': ['develop/**/*.ejs', 'develop/assets/data/**/*.json'],
-  'templateWatch': ['develop/_template/_*.ejs'],
+  'templateWatch': ['develop/_template/_*.ejs', 'develop/assets/data/**/*.json'],
   'data': 'develop/assets/data/',
   'css': 'develop/**/*.scss',
   'minifyCss': 'develop/assets/css/*.scss',
@@ -251,7 +251,7 @@ gulp.task('cleanHtdocs', function (cb) {
 /**
  * 一連のタスクを処理します（画像の圧縮は`test`タスクでおこないます）。
  */
-gulp.task('build', ['iconfont', 'html', 'css', 'js', 'bundleJs', 'image', 'styleguide']);
+gulp.task('build', ['iconfont', 'html', 'css', 'js', 'bundleJs', 'image', 'styleguide', 'template']);
 
 /**
  * watchタスクを指定します。

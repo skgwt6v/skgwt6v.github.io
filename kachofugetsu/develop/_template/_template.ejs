@@ -32,53 +32,49 @@ var rootPath = "/template/";
   <link rel="stylesheet" href="/assets/css/common.css">
 </head>
 <body>
-<%= qa_back_url %>
-<%= qa_next_url %>
-<section class="st-Wrapper st-qa_body">
-	<div class="st-Grid st-Grid-medium">
-	  <div class="st-Grid_Item st-Grid_Item-8of12Md">
-	    <h1 class-"st-qa_title"><%= qa_title %></h1>
-	  </div>
-	  <div class="st-Grid_Item st-Grid_Item-4of12Md">
-	    <h2 class="st-qa_question"><%= qa_question %></h2>
-	  </div>
-	</div>
-	<% for (var i = 0; i < qa_len; i++) { %>
+	<section class="st-Header st-qa_header st-qa_container">
+		<div class="st-Grid st-Grid-medium">
+		  <div class="st-Grid_Item st-Grid_Item-8of12Md">
+		    <h1 class="st-qa_title"><%= qa_title %></h1>
+		  </div>
+		</div>
+		<div class="st-Grid st-Grid-medium">
+		  <div class="st-Grid_Item st-Grid_Item-4of12Md">
+		    <h2 class="st-qa_question"><%= qa_question %></h2>
+		  </div>
+	</section>
+	<section class="st-Wrapper st-qa_body st-qa_container">
+		</div>
+		<% for (var i = 0; i < qa_len; i++) { %>
 
-	  			<div class="st-Grid st-Grid-medium">
-				<div class="st-Grid_Item st-Grid_Item-8of12Md"><%= qa_type[i] %></div>
-				<div class="st-Grid_Item st-Grid_Item-4of12Md">
-					<form method="post" action="example.cgi">
-					  	<input type="radio" name="q<% i %>" value="1">
-					  	<input type="radio" name="q<% i %>" value="2">
-					  	<input type="radio" name="q<% i %>" value="3">
-					  	<input type="radio" name="q<% i %>" value="4"> 
-		  			</form>
+		  			<div class="st-Grid st-Grid-medium">
+					<div class="st-Grid_Item st-Grid_Item-8of12Md"><%= qa_type[i] %></div>
+					<div class="st-Grid_Item st-Grid_Item-4of12Md">
+						<form method="post" action="example.cgi">
+						  	<input type="radio" name="q<% i %>" value="1">
+						  	<input type="radio" name="q<% i %>" value="2">
+						  	<input type="radio" name="q<% i %>" value="3">
+						  	<input type="radio" name="q<% i %>" value="4"> 
+			  			</form>
+					</div>
 				</div>
-			</div>
-	<% } %>
-</div>
-</section>
-<section class="st-Footer st-qa_footer">
-	<div class="st-Grid st-Grid-medium">
-		<div class="st-Grid_Item st-Grid_Item-4of12Md st-qa_footer_link_back">
-			<p><a href="">トップページへ</a></p>
-			<p><a href="">前の質問に戻る</a></p>
-		</div>
-		<div class="st-Grid_Item st-Grid_Item-4of12Md st-qa_footer_number">
-			<p>残り<%= qa_remining %>です。</p>
-		</div>
-		<div class="st-Grid_Item st-Grid_Item-4of12Md st-qa_footer_link_next">
-			<p><a href="">次の質問へ</a></p>
-		</div>
+		<% } %>
 	</div>
-</section>
-タイトルは<%= data.title %>
-ディスクリプションは<%= data.description %>
-
-クエッションは<%= data.question %>
-
-
+	</section>
+	<section class="st-Footer st-qa_footer st-qa_container">
+		<div class="st-Grid st-Grid-medium">
+			<div class="st-Grid_Item st-Grid_Item-4of12Md st-qa_footer_link_back">
+				<p><a href="">トップページへ</a></p>
+				<p><a href="<%= qa_back_url %>">前の質問に戻る</a></p>
+			</div>
+			<div class="st-Grid_Item st-Grid_Item-4of12Md st-qa_footer_number">
+				<p>残り<%= qa_remining %>です。</p>
+			</div>
+			<div class="st-Grid_Item st-Grid_Item-4of12Md st-qa_footer_link_next">
+				<p><a href="<%= qa_next_url %>">次の質問へ</a></p>
+			</div>
+		</div>
+	</section>
 
 <script type="text/javascript" src="/assets/js/jquery-2.2.0.min.js"></script>
 <script type="text/javascript" src="/assets/js/common.js"></script>

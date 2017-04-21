@@ -20,6 +20,7 @@ var rootPath = "/template/";
 		qa_current == qa_count
 		? rootPath + "result.html"
 		: rootPath + (qa_current + 1) + ".html";
+
 		
 
 %><!DOCTYPE html>
@@ -34,27 +35,34 @@ var rootPath = "/template/";
 <body>
 	<section class="st-Header st-qa_header st-qa_container">
 		<div class="st-Grid st-Grid-medium">
-		  <div class="st-Grid_Item st-Grid_Item-8of12Md">
+		  <div class="st-Grid_Item st-Grid_Item-12of12Md">
 		    <h1 class="st-qa_title"><%= qa_title %></h1>
 		  </div>
 		</div>
 		<div class="st-Grid st-Grid-medium">
-		  <div class="st-Grid_Item st-Grid_Item-4of12Md">
+		  <div class="st-Grid_Item st-Grid_Item-12of12Md">
 		    <h2 class="st-qa_question"><%= qa_question %></h2>
 		  </div>
 	</section>
+
 	<section class="st-Wrapper st-qa_body st-qa_container">
 		</div>
 		<% for (var i = 0; i < qa_len; i++) { %>
 
 		  			<div class="st-Grid st-Grid-medium">
-					<div class="st-Grid_Item st-Grid_Item-8of12Md"><%= qa_type[i] %></div>
+					<div class="st-Grid_Item st-Grid_Item-8of12Md">
+						<p class="st-qa_answer"><%= qa_type[i] %></p>
+					</div>
 					<div class="st-Grid_Item st-Grid_Item-4of12Md">
 						<form method="post" action="example.cgi">
-						  	<input type="radio" name="q<% i %>" value="1">
-						  	<input type="radio" name="q<% i %>" value="2">
-						  	<input type="radio" name="q<% i %>" value="3">
-						  	<input type="radio" name="q<% i %>" value="4"> 
+						  	<input type="radio" name="answer<%= qa_current %>" value="answer<%= i %>" id="radio<%= i %>-1">
+						  	<label for="radio<%= i %>-1" class="radio">思う</label>
+						  	<input type="radio" name="answer<%= qa_current %>" value="answer<%= i %>" id="radio<%= i %>-2">
+						  	<label for="radio<%= i %>-2" class="radio"> </label>
+						  	<input type="radio" name="answer<%= qa_current %>" value="answer<%= i %>" id="radio<%= i %>-3">
+						  	<label for="radio<%= i %>-3" class="radio"> </label>
+						  	<input type="radio" name="answer<%= qa_current %>" value="answer<%= i %>" id="radio<%= i %>-4">
+						  	<label for="radio<%= i %>-4" class="radio">思わない</label>
 			  			</form>
 					</div>
 				</div>
@@ -64,7 +72,6 @@ var rootPath = "/template/";
 	<section class="st-Footer st-qa_footer st-qa_container">
 		<div class="st-Grid st-Grid-medium">
 			<div class="st-Grid_Item st-Grid_Item-4of12Md st-qa_footer_link_back">
-				<p><a href="">トップページへ</a></p>
 				<p><a href="<%= qa_back_url %>">前の質問に戻る</a></p>
 			</div>
 			<div class="st-Grid_Item st-Grid_Item-4of12Md st-qa_footer_number">
@@ -73,6 +80,29 @@ var rootPath = "/template/";
 			<div class="st-Grid_Item st-Grid_Item-4of12Md st-qa_footer_link_next">
 				<p><a href="<%= qa_next_url %>">次の質問へ</a></p>
 			</div>
+		</div>
+		<div class="st-Grid st-Grid-medium">
+			<div class="st-Grid_Item st-Grid_Item-12of12Md">
+				<ul class=" progress-indicator custom-complex">
+				<% for (var i = 1; i < qa_count; i++) { %>
+
+			            <% if ( i <= qa_current) { %>
+			            	<li class="completed">
+				                <span class="bubble"></span>
+				                <i class="fa fa-check-circle"></i>
+				            </li>
+			            <% } else { %>
+			            	<li>
+				                <span class="bubble"></span>
+				            </li>
+			            <% } %>
+
+			        <% } %>
+		        </ul>
+	        </div>
+	        <div class="st-Grid_Item st-Grid_Item-12of12Md">
+        		<p><a href="">トップページへ</a></p>
+	        </div>
 		</div>
 	</section>
 

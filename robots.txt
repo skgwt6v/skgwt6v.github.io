@@ -1,2 +1,3 @@
 User-Agent: *
-Noindex: /kachofugetsu/test/
+Disallow: /
+Noindex: /
